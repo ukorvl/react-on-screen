@@ -23,5 +23,5 @@
     "emitDeclarationOnly": true,
     "allowJs": false,
   },
-  "include": ["src"],
+  "include": ["lib"],
 }
