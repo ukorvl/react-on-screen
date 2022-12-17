@@ -1,0 +1,21 @@
+node_modules
+build
+coverage
+
+# local env files
+.env*.local
+
+# misc
+.DS_Store
+*.pem
+.swc
+
+# debug
+npm-debug.log*
+
+# editors
+.idea
+.vscode
+
+# storybook
+storybook-static
