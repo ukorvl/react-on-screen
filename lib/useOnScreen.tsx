@@ -14,7 +14,7 @@ export type UseOnScreenSettings<T extends HTMLElement> = {
    */
   threshold?: number;
   /**
-   * Trigger visibility detection only once.
+   * Triggers visibility detection only once.
    */
   once?: boolean;
 }

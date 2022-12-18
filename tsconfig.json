@@ -18,11 +18,11 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "resolveJsonModule": true,
-    "declaration": true,
+    "declaration": false,
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "allowJs": false,
-    "removeComments": false
+    "removeComments": true
   },
   "include": ["lib"],
 }

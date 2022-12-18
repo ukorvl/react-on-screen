@@ -15,7 +15,7 @@ type OnScreenProps<T extends HTMLElement> = {
     isOnScreen: boolean,
     ref: RefObject<T>
   }) => ReactNode;
-}  & Omit<UseOnScreenSettings<T>, 'ref'>;
+} & Omit<UseOnScreenSettings<T>, 'ref'>;
 
 /**
  * Headless wrapper component to detect react element visibility.
