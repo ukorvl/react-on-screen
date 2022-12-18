@@ -3,14 +3,15 @@
     "target": "es2016",
     "lib": [
       "dom",
-      "es2016",
+      "esnext",
     ],
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "skipLibCheck": true,
     "outDir": "build",
-    "module": "esnext",
+    "rootDir": "lib",
+    "module": "CommonJS",
     "jsx": "react",
     "noImplicitReturns": true,
     "suppressImplicitAnyIndexErrors": true,
@@ -20,8 +21,8 @@
     "declaration": true,
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
-    "emitDeclarationOnly": true,
     "allowJs": false,
+    "removeComments": false
   },
   "include": ["lib"],
 }
