@@ -14,7 +14,8 @@ export type UseOnScreenSettings<T extends HTMLElement> = {
    */
   threshold?: number;
   /**
-   * Triggers visibility detection only once.
+   * Triggers visibility detection only once. Works like appear on screen trigger.
+   * @default false
    */
   once?: boolean;
 }
@@ -32,7 +33,7 @@ export type UseOnScreenSettings<T extends HTMLElement> = {
 export const useOnScreen = <T extends HTMLElement>({
   ref,
   threshold = 0,
-  once,
+  once = false,
 }: UseOnScreenSettings<T>): boolean => {
   const [isIntersecting, setIntersecting] = useState(false);
 
@@ -44,7 +45,7 @@ export const useOnScreen = <T extends HTMLElement>({
     const observer = new IntersectionObserver(
       ([entry]) => {
         setIntersecting(entry.isIntersecting);
-        once && observer.disconnect();
+        once && entry.isIntersecting && observer.disconnect();
       },
       {
         threshold,

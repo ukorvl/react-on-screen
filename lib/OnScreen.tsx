@@ -8,10 +8,7 @@ type OnScreenProps<T extends HTMLElement> = {
   /**
    * Render function.
    */
-  children: ({
-    isOnScreen,
-    ref,
-  }: {
+  children: (props: {
     isOnScreen: boolean,
     ref: RefObject<T>
   }) => ReactNode;
