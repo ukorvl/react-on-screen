@@ -1,7 +1,7 @@
 {
   "name": "react-on-screen",
   "version": "1.0.0",
-  "description": "Lightweight library to detect React elements visibility",
+  "description": "Lightweight typescript library to detect React elements visibility",
   "licence": "MIT",
   "author": "ukorvl",
   "repository": "https://github.com/ukorvl/react-on-screen",
@@ -22,6 +22,7 @@
   },
   "keywords": [
     "react",
+    "typescript",
     "onscreen",
     "intersection observer"
   ],
