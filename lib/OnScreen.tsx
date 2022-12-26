@@ -8,10 +8,7 @@ type OnScreenProps<T extends HTMLElement> = {
   /**
    * Render function.
    */
-  children: (props: {
-    isOnScreen: boolean,
-    ref: RefObject<T>
-  }) => ReactNode;
+  children: (props: { isOnScreen: boolean; ref: RefObject<T> }) => ReactNode;
 } & Omit<UseOnScreenSettings<T>, 'ref'>;
 
 /**
@@ -20,15 +17,20 @@ type OnScreenProps<T extends HTMLElement> = {
  * <OnScreen>
  *   {({isOnScreen, ref}) => (
  *     <div ref={ref}>
-*        {isOnScreen && 'I am visible!'}
+ *       {isOnScreen && 'I am visible!'}
  *     </div>
  *   )}
  * </OnScreen>
  * ```
+ * @param {OnScreenProps} onScreenComponentProps Props.
+ * @returns Children.
  */
-export const OnScreen = <T extends HTMLElement>({children, ...rest}: OnScreenProps<T>) => {
+export const OnScreen = <T extends HTMLElement>({
+  children,
+  ...rest
+}: OnScreenProps<T>) => {
   const ref = useRef<T>(null);
-  const isOnScreen = useOnScreen({ref, ...rest});
+  const isOnScreen = useOnScreen({ ref, ...rest });
 
-  return Children.only(children({ref, isOnScreen}));
+  return Children.only(children({ ref, isOnScreen }));
 };

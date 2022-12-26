@@ -18,7 +18,7 @@ export type UseOnScreenSettings<T extends HTMLElement> = {
    * @default false
    */
   once?: boolean;
-}
+};
 
 /**
  * Hook detects wether element is on screen or not.
@@ -28,6 +28,7 @@ export type UseOnScreenSettings<T extends HTMLElement> = {
  *
  * return (<div>{isOnScreen && 'I am on the screen!'}</div>);
  * ```
+ * @param {UseOnScreenSettings} useOnScreenProps - Props.
  * @returns - Is element on screen.
  */
 export const useOnScreen = <T extends HTMLElement>({
