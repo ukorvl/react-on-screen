@@ -18,6 +18,12 @@ export type UseOnScreenSettings<T extends HTMLElement> = {
    * @default false
    */
   once?: boolean;
+  /**
+   * Root margin. This set of values serves to grow or shrink each side of the element's bounding box
+   * before computing visibility.
+   * @example ```50px 0 0 | 50px | 2rem 3rem```
+   */
+  margin?: string;
 };
 
 /**
@@ -35,6 +41,7 @@ export const useOnScreen = <T extends HTMLElement>({
   ref,
   threshold = 0,
   once = false,
+  margin,
 }: UseOnScreenSettings<T>): boolean => {
   const [isIntersecting, setIntersecting] = useState(false);
 
@@ -50,6 +57,7 @@ export const useOnScreen = <T extends HTMLElement>({
       },
       {
         threshold,
+        rootMargin: margin,
       },
     );
 
