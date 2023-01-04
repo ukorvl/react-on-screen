@@ -8,10 +8,7 @@
   "main": "build/cjs/index.js",
   "module": "build/esm/index.esm.js",
   "files": [
-    "build",
-    "LICENSE",
-    "README.md",
-    "package.json"
+    "build"
   ],
   "types": "build/index.d.ts",
   "scripts": {
