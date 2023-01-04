@@ -1,4 +1,4 @@
-import { ReactNode, Children, useRef, RefObject } from 'react';
+import { Children, useRef, RefObject, ReactElement } from 'react';
 import { UseOnScreenSettings, useOnScreen } from './useOnScreen';
 
 /**
@@ -8,7 +8,7 @@ type OnScreenProps<T extends HTMLElement> = {
   /**
    * Render function.
    */
-  children: (props: { isOnScreen: boolean; ref: RefObject<T> }) => ReactNode;
+  children: (props: { isOnScreen: boolean; ref: RefObject<T> }) => ReactElement;
 } & Omit<UseOnScreenSettings<T>, 'ref'>;
 
 /**
@@ -28,7 +28,7 @@ type OnScreenProps<T extends HTMLElement> = {
 export const OnScreen = <T extends HTMLElement>({
   children,
   ...rest
-}: OnScreenProps<T>) => {
+}: OnScreenProps<T>): ReactElement => {
   const ref = useRef<T>(null);
   const isOnScreen = useOnScreen({ ref, ...rest });
 

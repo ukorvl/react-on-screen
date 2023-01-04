@@ -25,4 +25,5 @@
     "removeComments": true
   },
   "include": ["lib"],
+  "exclude": ["**/__tests__/**"],
 }
