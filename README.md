@@ -12,11 +12,11 @@ Lightweight typescript library to detect React elements visibility
 ## Getting started
 Using npm
 ```bash
-$ npm i @nilfoundation/react-components
+$ npm i @ukorvl/react-on-screen
 ```
 or yarn
 ```bash
-yarn add @nilfoundation/react-components
+yarn add @ukorvl/react-on-screen
 ```
 or CDN
 ```html
