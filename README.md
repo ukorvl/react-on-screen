@@ -5,9 +5,6 @@ Lightweight typescript library to detect React elements visibility
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
 ## Table of contents
-
-- [@ukrovl/react-on-screen](#ukrovlreact-on-screen)
-  - [Table of contents](#table-of-contents)
   - [Getting started](#getting-started)
   - [Usage](#usage)
   - [License](#license)
