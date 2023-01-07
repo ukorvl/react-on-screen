@@ -66,7 +66,7 @@ export const useOnScreen = <T extends HTMLElement>({
     return () => {
       observer.disconnect();
     };
-  }, [ref, threshold, once]);
+  }, [ref, threshold, once, margin]);
 
   return isIntersecting;
 };

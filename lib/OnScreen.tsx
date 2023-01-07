@@ -51,7 +51,7 @@ export const OnScreen = <T extends HTMLElement>({
   const isOnScreen = useOnScreen({ ref, ...rest });
   const renderer = useCallback(
     () => Children.only(children({ ref, isOnScreen })),
-    [isOnScreen],
+    [isOnScreen, children, ref],
   );
 
   if (As !== undefined) {
