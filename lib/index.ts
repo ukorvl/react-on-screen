@@ -1,3 +1,3 @@
-export { OnScreen as default } from './OnScreen';
-export * from './useOnScreen';
+export { useOnScreen as default } from './useOnScreen';
+export * from './OnScreen';
 export * from './withOnScreen';

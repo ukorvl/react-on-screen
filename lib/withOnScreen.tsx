@@ -11,19 +11,22 @@ import { assignRefs } from './internal';
  *    ...
  *   </ul>
  * )
- * export const ListWithOnScreen = WithOnScreen(List, {threshold: 0.5});
+ * export const ListWithOnScreen = WithOnScreen(List, {threshold: 0.5, margin: '4rem'});
  * ```
  * @param WrappedComponent Component to inject props.
  * @param settings Wrapper settings.
  * @returns Wrapped component with onScreen props.
  */
-export const withOnScreen = <P extends Record<string, unknown>, T extends HTMLElement>(
+export const withOnScreen = <
+  P extends Record<string, unknown>,
+  T extends HTMLElement,
+>(
   WrappedComponent: ComponentType<P>,
-  settings: Omit<UseOnScreenSettings<T>, 'ref'>
+  settings: Omit<UseOnScreenSettings<T>, 'ref'>,
 ) => {
   const WithOnScreen = (props: P, forwardedRef: ForwardedRef<T>) => {
     const ref = useRef<T>(null);
-    const isOnScreen = useOnScreen({ref, ...settings});
+    const isOnScreen = useOnScreen({ ref, ...settings });
 
     return (
       <WrappedComponent
@@ -34,7 +37,9 @@ export const withOnScreen = <P extends Record<string, unknown>, T extends HTMLEl
     );
   };
 
-  WithOnScreen.displayName = `WithOnScreen(${WrappedComponent.displayName || WrappedComponent.name || 'Component'})`;
+  WithOnScreen.displayName = `WithOnScreen(${
+    WrappedComponent.displayName || WrappedComponent.name || 'Component'
+  })`;
 
-  return forwardRef(WithOnScreen) ;
+  return forwardRef(WithOnScreen);
 };

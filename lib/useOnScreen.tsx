@@ -32,7 +32,7 @@ export type UseOnScreenSettings<T extends HTMLElement> = {
  * const ref = useRef<T>(null);
  * const isOnScreen = useOnScreen({ref});
  *
- * return (<div>{isOnScreen && 'I am on the screen!'}</div>);
+ * return (<div>{isOnScreen ? 'I am on screen!' : 'I'm not on screen'}</div>);
  * ```
  * @param {UseOnScreenSettings} useOnScreenProps - Props.
  * @returns - Is element on screen.

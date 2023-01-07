@@ -17,7 +17,7 @@ type OnScreenProps<T extends HTMLElement> = {
  * <OnScreen>
  *   {({isOnScreen, ref}) => (
  *     <div ref={ref}>
- *       {isOnScreen && 'I am visible!'}
+ *       {isOnScreen ? 'I am on screen!' : 'I'm not on screen'}
  *     </div>
  *   )}
  * </OnScreen>
