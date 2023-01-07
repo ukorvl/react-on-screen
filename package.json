@@ -2,7 +2,7 @@
   "name": "@ukorvl/react-on-screen",
   "version": "1.0.0-beta.0",
   "description": "Lightweight typescript library to detect React elements visibility",
-  "licence": "MIT",
+  "license": "MIT",
   "author": "ukorvl",
   "repository": "https://github.com/ukorvl/react-on-screen",
   "homepage": "https://github.com/ukorvl/react-on-screen#readme",
