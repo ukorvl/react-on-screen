@@ -27,6 +27,8 @@ or CDN
 
 ## Usage
 
+This library is using Intersection observer API under the hood, so you may need to polyfill it. More information about Intersection observer API browser support at [caniuse](https://caniuse.com/intersectionobserver).
+
 ## License
 
 [MIT](http://opensource.org/licenses/MIT)
