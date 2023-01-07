@@ -11,7 +11,7 @@
   "files": [
     "build"
   ],
-  "types": "build/index.d.ts",
+  "types": "build/esm/index.d.ts",
   "scripts": {
     "build:esm": "tsc -m esNext --outDir build/esm && npm run build:types -- --outDir build/esm",
     "build:cjs": "tsc --outDir build/cjs && npm run build:types -- --outDir build/cjs",
