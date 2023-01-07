@@ -18,7 +18,8 @@
     "build:types": "tsc --declaration --emitDeclarationOnly --removeComments false",
     "build": "npm run build:esm && npm run build:cjs",
     "test": "jest",
-    "lint": "eslint --ext=ts,tsx lib",
+    "lint": "eslint --ext=ts,tsx lib --max-warnings=0",
+    "lint:editorconfig": "npx editorconfig-checker",
     "prepare": "husky install"
   },
   "keywords": [
@@ -126,6 +127,10 @@
     "testEnvironment": "jsdom",
     "setupFilesAfterEnv": [
       "@testing-library/jest-dom/extend-expect"
+    ],
+    "testPathIgnorePatterns": [
+      "<rootDir>/build/",
+      "<rootDir>/node_modules/"
     ]
   }
 }

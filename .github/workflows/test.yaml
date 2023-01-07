@@ -1,0 +1,50 @@
+# Copyright Yury Korotovskikh 2022 <u.korotovskiy@nil.foundation>
+
+name: Test
+
+on:
+  # Triggers the workflow on pull request
+  pull_request:
+  # Allows to trigger workflow manually
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: [ubuntu-latest]
+    name: Test
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup nodejs
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+
+      - name: Cache dependencies
+        id: cache-node-modules
+        uses: actions/cache@v3
+        env:
+          CACHE_NAME: cache-node-modules
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-npm-cache-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-npm-cache-
+            ${{ runner.os }}-
+
+      - name: Install dependencies
+        if: ${{ steps.cache-node-modules.outputs.cache-hit != 'true' }}
+        run : npm ci --ignore-scripts
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Lint:editorconfig
+        run: npm run lint:editorconfig
+
+      - name: Test
+        run: npm run test
+
+      - name: Build
+        run: npm run build
