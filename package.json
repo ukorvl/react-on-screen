@@ -1,10 +1,11 @@
 {
-  "name": "react-on-screen",
+  "name": "@ukorvl/react-on-screen",
   "version": "1.0.0-beta.0",
   "description": "Lightweight typescript library to detect React elements visibility",
   "licence": "MIT",
   "author": "ukorvl",
   "repository": "https://github.com/ukorvl/react-on-screen",
+  "homepage": "https://github.com/ukorvl/react-on-screen#readme",
   "main": "build/cjs/index.js",
   "module": "build/esm/index.esm.js",
   "files": [
