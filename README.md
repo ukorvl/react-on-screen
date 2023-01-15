@@ -37,8 +37,8 @@ import { OnScreen } from '@ukorvl/react-on-screen';
 const MyComponent = () => (
   <OnScreen>
     {({isOnScreen, ref}) => (
-     <div ref={ref}>
-      {isOnScreen ? 'On screen!' : 'Not on screen'}
+      <div ref={ref}>
+        {isOnScreen ? 'On screen!' : 'Not on screen'}
       </div>
     )}
   </OnScreen>
