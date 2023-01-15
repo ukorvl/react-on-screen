@@ -1,36 +1,78 @@
-import { Children, useRef, RefObject, ReactElement } from 'react';
+import React, {
+  useCallback,
+  Children,
+  useRef,
+  RefObject,
+  ReactElement,
+  ElementType,
+  ComponentProps,
+} from 'react';
 import { UseOnScreenSettings, useOnScreen } from './useOnScreen';
 
 /**
- * OnScreen component props.
+ * OnScreen component own props.
  */
-type OnScreenProps<T extends HTMLElement> = {
+type OnScreenOwnProps<
+  T extends HTMLElement,
+  AS extends ElementType = ElementType,
+> = {
   /**
    * Render function.
    */
   children: (props: { isOnScreen: boolean; ref: RefObject<T> }) => ReactElement;
+  /**
+   * Element to render.
+   */
+  as?: AS;
 } & Omit<UseOnScreenSettings<T>, 'ref'>;
 
 /**
- * Headless wrapper component to detect react element visibility.
+ * OnScreen component props with generic element props.
+ */
+type OnScreenProps<
+  T extends HTMLElement,
+  AS extends ElementType = ElementType,
+> = OnScreenOwnProps<T, AS> &
+  Omit<ComponentProps<AS>, keyof OnScreenOwnProps<T, AS>>;
+
+/**
+ * Wrapper component to detect react element visibility.
+ * It's headless, but with 'as' prop custom element can be rendered.
  * @example ```tsx
  * <OnScreen>
  *   {({isOnScreen, ref}) => (
  *     <div ref={ref}>
- *       {isOnScreen ? 'I am on screen!' : 'I'm not on screen'}
+ *       {isOnScreen ? 'On screen!' : 'Not on screen'}
  *     </div>
  *   )}
  * </OnScreen>
  * ```
  * @param {OnScreenProps} onScreenComponentProps Props.
- * @returns Children.
+ * @returns Children elements with on-screen wrapper.
  */
-export const OnScreen = <T extends HTMLElement>({
+export const OnScreen = <
+  T extends HTMLElement,
+  AS extends ElementType = ElementType,
+>({
   children,
-  ...rest
-}: OnScreenProps<T>): ReactElement => {
+  margin,
+  threshold,
+  once,
+  as,
+  ...restProps
+}: OnScreenProps<T, AS>): ReactElement => {
+  const Component: ElementType | undefined = as;
   const ref = useRef<T>(null);
-  const isOnScreen = useOnScreen({ ref, ...rest });
+  const isOnScreen = useOnScreen({ ref, margin, threshold, once });
 
-  return Children.only(children({ ref, isOnScreen }));
+  const renderChildren = useCallback(
+    () => Children.only(children({ ref, isOnScreen })),
+    [isOnScreen, children, ref],
+  );
+
+  if (Component !== undefined) {
+    return <Component {...restProps}>{renderChildren()}</Component>;
+  }
+
+  return renderChildren();
 };
