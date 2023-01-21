@@ -92,6 +92,8 @@
       "jsdoc/newline-after-description": "off",
       "jsdoc/require-returns-type": "off",
       "jsdoc/require-param-type": "off",
+      "jsdoc/require-description-complete-sentence": "warn",
+      "jsdoc/check-indentation": "warn",
       "jsdoc/require-jsdoc": [
         "warn",
         {
