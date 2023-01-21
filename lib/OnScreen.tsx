@@ -58,12 +58,19 @@ export const OnScreen = <
   margin,
   threshold,
   once,
+  onVisibilityChange,
   as,
   ...restProps
 }: OnScreenProps<T, AS>): ReactElement => {
   const Component: ElementType | undefined = as;
   const ref = useRef<T>(null);
-  const isOnScreen = useOnScreen({ ref, margin, threshold, once });
+  const isOnScreen = useOnScreen({
+    ref,
+    margin,
+    threshold,
+    once,
+    onVisibilityChange,
+  });
 
   const renderChildren = useCallback(
     () => Children.only(children({ ref, isOnScreen })),
