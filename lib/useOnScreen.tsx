@@ -29,13 +29,13 @@ export type UseOnScreenSettings<T extends HTMLElement> = {
    */
   margin?: string;
   /**
-   * Callback to execute on visibility change.
+   * Callback to execute every time visibility passes a threshold.
    */
   onVisibilityChange?: OnVisibilityChangeCb;
 };
 
 /**
- * Callback to execute on visibility change
+ * Callback to execute every time visibility passes a threshold.
  */
 export type OnVisibilityChangeCb = (params: {
   /**
