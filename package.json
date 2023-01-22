@@ -1,6 +1,6 @@
 {
   "name": "@ukorvl/react-on-screen",
-  "version": "1.0.0-beta.1",
+  "version": "1.0.0-beta.2",
   "description": "Lightweight typescript library to detect React elements visibility",
   "license": "MIT",
   "author": "ukorvl",
@@ -92,6 +92,8 @@
       "jsdoc/newline-after-description": "off",
       "jsdoc/require-returns-type": "off",
       "jsdoc/require-param-type": "off",
+      "jsdoc/require-description-complete-sentence": "warn",
+      "jsdoc/check-indentation": "warn",
       "jsdoc/require-jsdoc": [
         "warn",
         {

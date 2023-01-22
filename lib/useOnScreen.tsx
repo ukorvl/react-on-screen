@@ -9,12 +9,16 @@ export type UseOnScreenSettings<T extends HTMLElement> = {
    */
   ref: RefObject<T>;
   /**
-   * Visibility threshold. Set 1 to consider visibility only if all element is on screen.
+   * Visibility threshold.
+   * Set 1 to consider visibility only if all element is on screen.
+   * If array of thresholds is passed, visibility detection will be triggered every time visibility passes
+   * one of provided thresholds.
    * @default 0
    */
-  threshold?: number;
+  threshold?: number | Array<number>;
   /**
-   * Triggers visibility detection only once. Works like appear on screen trigger.
+   * Triggers visibility detection only once. Works like appear on screen trigger. Once element
+   * becomes vivisble, visibility detection will be disabled.
    * @default false
    */
   once?: boolean;
@@ -30,7 +34,7 @@ export type UseOnScreenSettings<T extends HTMLElement> = {
  * Hook detects wether element is on screen or not.
  * @example ```tsx
  * const ref = useRef<T>(null);
- * const isOnScreen = useOnScreen({ref});
+ * const {isOnScreen} = useOnScreen({ref});
  *
  * return (<div ref={ref}>{isOnScreen ? 'On screen!' : 'Not on screen'}</div>);
  * ```
@@ -42,8 +46,9 @@ export const useOnScreen = <T extends HTMLElement>({
   threshold = 0,
   once = false,
   margin,
-}: UseOnScreenSettings<T>): boolean => {
+}: UseOnScreenSettings<T>) => {
   const [isIntersecting, setIntersecting] = useState(false);
+  const [intersectionRatio, setIntersectionRatio] = useState<number>();
 
   useEffect(() => {
     if (!ref.current) {
@@ -52,8 +57,12 @@ export const useOnScreen = <T extends HTMLElement>({
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setIntersecting(entry.isIntersecting);
-        once && entry.isIntersecting && observer.disconnect();
+        const { isIntersecting, intersectionRatio } = entry;
+
+        setIntersecting(isIntersecting);
+        setIntersectionRatio(intersectionRatio);
+
+        once && isIntersecting && observer.disconnect();
       },
       {
         threshold,
@@ -68,5 +77,8 @@ export const useOnScreen = <T extends HTMLElement>({
     };
   }, [ref, threshold, once, margin]);
 
-  return isIntersecting;
+  return {
+    isOnScreen: isIntersecting,
+    visibilityRatio: intersectionRatio,
+  };
 };
