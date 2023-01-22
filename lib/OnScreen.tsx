@@ -19,7 +19,9 @@ type OnScreenOwnProps<
   /**
    * Render function.
    */
-  children: (props: { isOnScreen: boolean; ref: RefObject<T> }) => ReactElement;
+  children: (
+    props: { ref: RefObject<T> } & ReturnType<typeof useOnScreen>,
+  ) => ReactElement;
   /**
    * Element to render.
    */
@@ -58,23 +60,21 @@ export const OnScreen = <
   margin,
   threshold,
   once,
-  onVisibilityChange,
   as,
   ...restProps
 }: OnScreenProps<T, AS>): ReactElement => {
   const Component: ElementType | undefined = as;
   const ref = useRef<T>(null);
-  const isOnScreen = useOnScreen({
+  const useOnScreenData = useOnScreen({
     ref,
     margin,
     threshold,
     once,
-    onVisibilityChange,
   });
 
   const renderChildren = useCallback(
-    () => Children.only(children({ ref, isOnScreen })),
-    [isOnScreen, children, ref],
+    () => Children.only(children({ ref, ...useOnScreenData })),
+    [useOnScreenData, children, ref],
   );
 
   if (Component !== undefined) {

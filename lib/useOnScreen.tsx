@@ -28,31 +28,13 @@ export type UseOnScreenSettings<T extends HTMLElement> = {
    * @example ```50px 0 0 | 50px | 2rem 3rem```
    */
   margin?: string;
-  /**
-   * Callback to execute every time visibility passes a threshold.
-   */
-  onVisibilityChange?: OnVisibilityChangeCb;
 };
-
-/**
- * Callback to execute every time visibility passes a threshold.
- */
-export type OnVisibilityChangeCb = (params: {
-  /**
-   * Is element on screen.
-   */
-  isOnScreen: boolean;
-  /**
-   * Element visibility ratio.
-   */
-  visibilityRatio: number;
-}) => void;
 
 /**
  * Hook detects wether element is on screen or not.
  * @example ```tsx
  * const ref = useRef<T>(null);
- * const isOnScreen = useOnScreen({ref});
+ * const {isOnScreen} = useOnScreen({ref});
  *
  * return (<div ref={ref}>{isOnScreen ? 'On screen!' : 'Not on screen'}</div>);
  * ```
@@ -64,9 +46,9 @@ export const useOnScreen = <T extends HTMLElement>({
   threshold = 0,
   once = false,
   margin,
-  onVisibilityChange,
-}: UseOnScreenSettings<T>): boolean => {
+}: UseOnScreenSettings<T>) => {
   const [isIntersecting, setIntersecting] = useState(false);
+  const [intersectionRatio, setIntersectionRatio] = useState<number>();
 
   useEffect(() => {
     if (!ref.current) {
@@ -78,12 +60,7 @@ export const useOnScreen = <T extends HTMLElement>({
         const { isIntersecting, intersectionRatio } = entry;
 
         setIntersecting(isIntersecting);
-
-        onVisibilityChange &&
-          onVisibilityChange({
-            isOnScreen: isIntersecting,
-            visibilityRatio: intersectionRatio,
-          });
+        setIntersectionRatio(intersectionRatio);
 
         once && isIntersecting && observer.disconnect();
       },
@@ -98,7 +75,10 @@ export const useOnScreen = <T extends HTMLElement>({
     return () => {
       observer.disconnect();
     };
-  }, [ref, threshold, once, margin, onVisibilityChange]);
+  }, [ref, threshold, once, margin]);
 
-  return isIntersecting;
+  return {
+    isOnScreen: isIntersecting,
+    visibilityRatio: intersectionRatio,
+  };
 };

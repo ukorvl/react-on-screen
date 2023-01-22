@@ -26,12 +26,12 @@ export const withOnScreen = <
 ) => {
   const WithOnScreen = (props: P, forwardedRef: ForwardedRef<T>) => {
     const ref = useRef<T>(null);
-    const isOnScreen = useOnScreen({ ref, ...settings });
+    const useOnScreenData = useOnScreen({ ref, ...settings });
 
     return (
       <WrappedComponent
-        isOnScreen={isOnScreen}
         ref={assignRefs(ref, forwardedRef)}
+        {...useOnScreenData}
         {...props}
       />
     );

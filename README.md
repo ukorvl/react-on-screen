@@ -51,7 +51,7 @@ import useOnScreen from '@ukorvl/react-on-screen';
 
 const MyComponent = () => {
   const ref = useRef<T>(null);
-  const isOnScreen = useOnScreen({ref});
+  const {isOnScreen} = useOnScreen({ref});
 
   return (
     <div ref={ref}>{isOnScreen ? 'On screen!' : 'Not on screen'}</div>
