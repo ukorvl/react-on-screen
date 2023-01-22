@@ -11,7 +11,7 @@ export type UseOnScreenSettings<T extends HTMLElement> = {
   /**
    * Visibility threshold.
    * Set 1 to consider visibility only if all element is on screen.
-   * If array of thresholds is passed, visibility detection will be triggered every time visibility passes
+   * If array of thresholds is provided, visibility detection will be triggered every time visibility passes
    * one of provided thresholds.
    * @default 0
    */
