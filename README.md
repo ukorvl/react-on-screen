@@ -10,6 +10,9 @@ Lightweight typescript library to detect React elements visibility
 ## Table of contents
   - [Getting started](#getting-started)
   - [Usage](#usage)
+    - [Render props](#render-props)
+    - [Hook](#hook)
+    - [HOC](#hoc)
   - [License](#license)
 
 ## Getting started
