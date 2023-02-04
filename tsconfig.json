@@ -22,7 +22,8 @@
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "allowJs": false,
-    "removeComments": true
+    "removeComments": true,
+    "sourceMap": true
   },
   "include": ["lib"],
   "exclude": ["**/__tests__/**"],
