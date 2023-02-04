@@ -1,6 +1,6 @@
 {
   "name": "@ukorvl/react-on-screen",
-  "version": "1.0.0-beta.2",
+  "version": "1.0.0-beta.3",
   "description": "Lightweight typescript library to detect React elements visibility",
   "license": "MIT",
   "author": "ukorvl",
@@ -11,12 +11,12 @@
   "files": [
     "build"
   ],
-  "types": "build/esm/index.d.ts",
+  "types": "build/index.d.ts",
   "scripts": {
-    "build:esm": "tsc -m esNext --outDir build/esm && npm run build:types -- --outDir build/esm",
-    "build:cjs": "tsc --outDir build/cjs && npm run build:types -- --outDir build/cjs",
-    "build:types": "tsc --declaration --emitDeclarationOnly --removeComments false",
-    "build": "npm run build:esm && npm run build:cjs",
+    "build:esm": "tsc -m esNext --outDir build/esm",
+    "build:cjs": "tsc --outDir build/cjs",
+    "build:types": "tsc --declaration --emitDeclarationOnly --removeComments false --declarationDir build",
+    "build": "npm run build:esm && npm run build:cjs && npm run build:types",
     "test": "jest",
     "lint": "eslint --ext=ts,tsx lib --max-warnings=0",
     "lint:editorconfig": "npx editorconfig-checker",
