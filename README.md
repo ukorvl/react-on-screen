@@ -13,6 +13,7 @@ Lightweight typescript library to detect React elements visibility
     - [Render props](#render-props)
     - [Hook](#hook)
     - [HOC](#hoc)
+    - [Api](#api)
   - [License](#license)
 
 ## Getting started
@@ -73,6 +74,15 @@ const List = ({isOnScreen, ref, ...restProps}: ListProps) => (
 
 export const ListWithOnScreen = WithOnScreen(List, {threshold: 0.5, margin: '4rem'});
 ```
+
+### API
+**useOnScreen** hook settings. **OnScreen** and **WithOnScreen** components have the same api, except ref. **useOnScreen** consumes target element ref as a setting, but components deal with target element in a different way.
+
+|Name            |Default         |Description        |
+|----------------|----------------|-------------------|
+|threshold       |0                |Could be a single number from 0 to 1, or array of numbers. If you only want to detect when visibility passes the 50% mark, you can use a value of 0.5. Set 1 to consider visibility only if all element is on the screen.If array of thresholds is provided, visibility detection will be triggered every time visibility passes one of provided thresholds.|
+|margin          |undefined        |Could be any valid css margin value. This value serves to grow or shrink each side of the target element's bounding box before computing is it visible or not.|
+|once            |false            |Triggers visibility detection only once. Once target element becomes vivisble, visibility detection will be disabled.|
 
 ## License
 

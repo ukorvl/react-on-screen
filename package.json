@@ -26,7 +26,8 @@
     "react",
     "typescript",
     "onscreen",
-    "intersection observer"
+    "intersection observer",
+    "visibility"
   ],
   "peerDependencies": {
     "react": ">=16.12.0",
