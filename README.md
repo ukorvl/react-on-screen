@@ -1,4 +1,7 @@
-# @ukrovl/react-on-screen
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/ukorvl/design/master/react-on-screen/react-on-screen-dark.svg"/>
+  <img alt="react-on-screen logo" src="https://raw.githubusercontent.com/ukorvl/design/master/react-on-screen/react-on-screen.svg" width="600"/>
+</picture>
 
 Lightweight typescript library to detect React elements visibility
 
