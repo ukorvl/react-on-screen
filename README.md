@@ -30,8 +30,9 @@ yarn add @ukorvl/react-on-screen
 ```
 or CDN
 ```html
-<script src="https://unpkg.com/@ukorvl/react-on-screen"></script>
+<script src="https://unpkg.com/@ukorvl/react-on-screen@latest"></script>
 ```
+To load a specific version, replace latest with the version number.
 
 ## Usage
 

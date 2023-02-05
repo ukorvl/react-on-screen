@@ -14,9 +14,9 @@
   "types": "build/index.d.ts",
   "scripts": {
     "build:esm": "tsc -m esNext --outDir build/esm",
-    "build:cjs": "tsc --outDir build/cjs",
+    "build:umd": "tsc --outDir build/umd",
     "build:types": "tsc --declaration --emitDeclarationOnly --removeComments false --declarationDir build",
-    "build": "npm run build:esm && npm run build:cjs && npm run build:types",
+    "build": "npm run build:esm && npm run build:umd && npm run build:types",
     "test": "jest",
     "lint": "eslint --ext=ts,tsx lib --max-warnings=0",
     "lint:editorconfig": "npx editorconfig-checker",
