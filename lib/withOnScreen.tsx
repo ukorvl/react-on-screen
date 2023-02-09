@@ -38,9 +38,11 @@ export const withOnScreen = <
     );
   };
 
+  hoistNonReactStatics(WithOnScreen, WrappedComponent);
+
   WithOnScreen.displayName = `WithOnScreen(${
     WrappedComponent.displayName || WrappedComponent.name || 'Component'
   })`;
 
-  return hoistNonReactStatics(forwardRef(WithOnScreen));
+  return forwardRef(WithOnScreen);
 };
