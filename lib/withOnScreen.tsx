@@ -1,4 +1,5 @@
 import React, { useRef, ComponentType, forwardRef, ForwardedRef } from 'react';
+import hoistNonReactStatics from 'hoist-non-react-statics';
 import { UseOnScreenSettings, useOnScreen } from './useOnScreen';
 import { assignRefs } from './internal';
 
@@ -41,5 +42,5 @@ export const withOnScreen = <
     WrappedComponent.displayName || WrappedComponent.name || 'Component'
   })`;
 
-  return forwardRef(WithOnScreen);
+  return hoistNonReactStatics(forwardRef(WithOnScreen));
 };
