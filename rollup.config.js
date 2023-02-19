@@ -42,7 +42,7 @@ const getConfig = ({
     commonjs(),
     replace({
       preventAssignment: true,
-      values: { 'process.env.NODE_ENV': JSON.stringify('development') },
+      values: { 'process.env.NODE_ENV': JSON.stringify('production') },
     }),
     esbuild({
       minify: true,
