@@ -4,7 +4,7 @@ import { UseOnScreenSettings, useOnScreen } from './useOnScreen';
 import { assignRefs } from './internal';
 
 /**
- * Hight order component that takes a component and injects onScreen props into it.
+ * High order component that takes a component and injects onScreen props into it.
  * @example ```tsx
  * const List = ({isOnScreen, ref, ...restProps}: ListProps) => (
  *   <ul className={isOnScreen ? 'my-class' : ''} {...restProps}>

@@ -11,7 +11,7 @@
     "skipLibCheck": true,
     "outDir": "build",
     "rootDir": "lib",
-    "module": "UMD",
+    "module": "ESNext",
     "jsx": "react",
     "noImplicitReturns": true,
     "suppressImplicitAnyIndexErrors": true,
@@ -21,8 +21,6 @@
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "allowJs": false,
-    "removeComments": true,
-    "sourceMap": true
   },
   "include": ["lib"],
   "exclude": ["**/__tests__/**"],

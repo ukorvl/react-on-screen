@@ -31,7 +31,7 @@ type OnScreenOwnProps<
 /**
  * OnScreen component props with generic element props.
  */
-type OnScreenProps<
+export type OnScreenProps<
   T extends HTMLElement,
   AS extends ElementType = ElementType,
 > = OnScreenOwnProps<T, AS> &
