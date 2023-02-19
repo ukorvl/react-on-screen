@@ -11,7 +11,7 @@
     "skipLibCheck": true,
     "outDir": "build",
     "rootDir": "lib",
-    "module": "ESNext",
+    "module": "CommonJS",
     "jsx": "react",
     "noImplicitReturns": true,
     "suppressImplicitAnyIndexErrors": true,
