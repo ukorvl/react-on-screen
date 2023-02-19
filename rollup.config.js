@@ -32,6 +32,8 @@ const getConfig = ({
     file: outputFile,
     format,
     sourcemap: true,
+    globals: isStandalone ? {react: 'React'} : undefined,
+    name: isStandalone ? 'ReactOnScreen' : undefined,
     banner: createBanner(packageJson.version),
   },
   plugins: [
@@ -42,7 +44,7 @@ const getConfig = ({
     }),
     filesize(),
   ],
-  external: ['react', 'react-dom', 'hoist-non-react-statics'].concat(isStandalone ? [] : [])
+  external: ['react', 'react-dom'].concat(isStandalone ? [] : ['hoist-non-react-statics'])
 });
 
 /** Generate typings config */
@@ -65,7 +67,7 @@ const configs = [
   }),
   getConfig({
     input: 'lib/standalone.ts',
-    outputFile: 'build/react-on-screen.standalone.js',
+    outputFile: packageJson.unpkg,
     format: 'iife',
     isStandalone: true
   }),

@@ -33,8 +33,9 @@ or CDN
 <script src="https://unpkg.com/@ukorvl/react-on-screen@latest/build/react-on-screen.standalone.js"></script>
 ```
 The standalone version creates window.ReactOnScreen object with all exports from esm version.
-Note, that ```react``` and ```react-dom``` packages are not included into standalone version.
-To load a specific version, replace latest with the version number.
+To load a specific version, replace ```latest``` with the version number.
+
+Note, that ```react``` and ```react-dom``` packages are not included into standalone version. Standalone version needs global React variable to work.
 
 ## Usage
 
