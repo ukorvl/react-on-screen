@@ -20,22 +20,22 @@ Lightweight typescript library to detect React elements visibility
   - [License](#license)
 
 ## Getting started
-Using npm
+### npm
 ```bash
 $ npm i @ukorvl/react-on-screen
 ```
-or yarn
+### yarn
 ```bash
 yarn add @ukorvl/react-on-screen
 ```
-or CDN
+### CDN
 ```html
 <script src="https://unpkg.com/@ukorvl/react-on-screen@latest/build/react-on-screen.standalone.js"></script>
 ```
 The standalone version creates window.ReactOnScreen object with all exports from esm version.
 To load a specific version, replace ```latest``` with the version number.
 
-Note, that ```react``` and ```react-dom``` packages are not included into standalone version. Standalone version needs global React variable to work.
+Note, that ```react``` package is not included into standalone version, but is required. Standalone version requires global React variable, defined somewhere, to work as expected.
 
 ## Usage
 
