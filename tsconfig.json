@@ -17,12 +17,9 @@
     "suppressImplicitAnyIndexErrors": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "resolveJsonModule": true,
-    "declaration": false,
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "allowJs": false,
-    "removeComments": true
   },
   "include": ["lib"],
   "exclude": ["**/__tests__/**"],

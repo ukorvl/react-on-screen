@@ -1,4 +1,7 @@
-# @ukrovl/react-on-screen
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/ukorvl/design/master/react-on-screen/react-on-screen-dark.svg"/>
+  <img alt="react-on-screen logo" src="https://raw.githubusercontent.com/ukorvl/design/master/react-on-screen/react-on-screen.svg" width="600"/>
+</picture>
 
 Lightweight typescript library to detect React elements visibility
 
@@ -17,18 +20,22 @@ Lightweight typescript library to detect React elements visibility
   - [License](#license)
 
 ## Getting started
-Using npm
+### npm
 ```bash
 $ npm i @ukorvl/react-on-screen
 ```
-or yarn
+### yarn
 ```bash
 yarn add @ukorvl/react-on-screen
 ```
-or CDN
+### CDN
 ```html
-<script src="https://unpkg.com/@ukorvl/react-on-screen"></script>
+<script src="https://unpkg.com/@ukorvl/react-on-screen@latest/build/react-on-screen.standalone.js"></script>
 ```
+The standalone version creates window.ReactOnScreen object with all exports from esm version.
+To load a specific version, replace ```latest``` with the version number.
+
+Note, that ```react``` package is not included into standalone version, but is required. Standalone version requires global React variable, defined somewhere, to work as expected.
 
 ## Usage
 
@@ -82,7 +89,7 @@ export const ListWithOnScreen = WithOnScreen(List, {threshold: 0.5, margin: '4re
 |----------------|----------------|-------------------|
 |threshold       |0                |Could be a single number from 0 to 1, or array of numbers. If you only want to detect when visibility passes the 50% mark, you can use a value of 0.5. Set 1 to consider visibility only if all element is on the screen.If array of thresholds is provided, visibility detection will be triggered every time visibility passes one of provided thresholds.|
 |margin          |undefined        |Could be any valid css margin value. This value serves to grow or shrink each side of the target element's bounding box before computing is it visible or not.|
-|once            |false            |Triggers visibility detection only once. Once target element becomes vivisble, visibility detection will be disabled.|
+|once            |false            |Triggers visibility detection only once. Once target element becomes visible, visibility detection will be disabled.|
 
 ## License
 
