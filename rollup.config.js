@@ -28,7 +28,7 @@ const getConfig = ({
   format,
   isStandalone = false,
 }) => ({
-  input,
+  input: 'lib/index.ts',
   output: {
     file: outputFile,
     format,
@@ -40,15 +40,18 @@ const getConfig = ({
   plugins: [
     nodeResolve(),
     commonjs(),
-    replace({
-      preventAssignment: true,
-      values: { 'process.env.NODE_ENV': JSON.stringify('production') },
-    }),
     esbuild({
       minify: true,
     }),
     filesize(),
-  ],
+  ].concat(
+    isStandalone
+      ? replace({
+        preventAssignment: true,
+        values: { 'process.env.NODE_ENV': JSON.stringify('production') },
+      })
+      : []
+  ),
   external: ['react', 'react-dom'].concat(isStandalone ? [] : ['hoist-non-react-statics'])
 });
 
@@ -61,17 +64,14 @@ const dtsConfig = {
 
 const configs = [
   getConfig({
-    input: 'lib/index.ts',
     outputFile: packageJson.main,
     format: 'cjs',
   }),
   getConfig({
-    input: 'lib/index.ts',
     outputFile: packageJson.module,
     format: 'esm',
   }),
   getConfig({
-    input: 'lib/standalone.ts',
     outputFile: packageJson.unpkg,
     format: 'iife',
     isStandalone: true,
