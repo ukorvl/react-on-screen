@@ -30,10 +30,9 @@ yarn add @ukorvl/react-on-screen
 ```
 ### CDN
 ```html
-<script src="https://unpkg.com/@ukorvl/react-on-screen@latest/build/react-on-screen.standalone.js"></script>
+<script src="https://unpkg.com/@ukorvl/react-on-screen/build/react-on-screen.standalone.js"></script>
 ```
 The standalone version creates window.ReactOnScreen object with all exports from esm version.
-To load a specific version, replace ```latest``` with the version number.
 
 Note, that ```react``` package is not included into standalone version, but is required. Standalone version requires global React variable, defined somewhere, to work as expected.
 
