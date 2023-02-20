@@ -3,7 +3,7 @@ import { RefObject, useEffect, useState } from 'react';
 /**
  * UseOnScreen hook settings.
  */
-export type UseOnScreenSettings<T extends HTMLElement> = {
+export type UseOnScreenSettings<T extends HTMLElement = HTMLElement> = {
   /**
    * Target React element ref.
    */
@@ -39,7 +39,7 @@ export type UseOnScreenSettings<T extends HTMLElement> = {
  * return (<div ref={ref}>{isOnScreen ? 'On screen!' : 'Not on screen'}</div>);
  * ```
  * @param {UseOnScreenSettings} useOnScreenProps - Props.
- * @returns - Is element on screen.
+ * @returns .
  */
 export const useOnScreen = <T extends HTMLElement>({
   ref,

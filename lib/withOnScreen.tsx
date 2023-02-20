@@ -6,12 +6,13 @@ import { assignRefs } from './internal';
 /**
  * High order component that takes a component and injects onScreen props into it.
  * @example ```tsx
- * const List = ({isOnScreen, ref, ...restProps}: ListProps) => (
+ * const List = forwardRef(function List({isOnScreen, ...restProps}: ListProps) (
  *   <ul className={isOnScreen ? 'my-class' : ''} {...restProps}>
  *    <li>Something</li>
  *    ...
  *   </ul>
- * )
+ * ));
+ *
  * export const ListWithOnScreen = WithOnScreen(List, {threshold: 0.5, margin: '4rem'});
  * ```
  * @param WrappedComponent Component to inject props.
@@ -22,8 +23,8 @@ export const withOnScreen = <
   P extends Record<string, unknown>,
   T extends HTMLElement,
 >(
-  WrappedComponent: ComponentType<P>,
-  settings: Omit<UseOnScreenSettings<T>, 'ref'>,
+  WrappedComponent: ComponentType<P & ReturnType<typeof useOnScreen>>,
+  settings?: Omit<UseOnScreenSettings<T>, 'ref'>,
 ) => {
   const WithOnScreen = (props: P, forwardedRef: ForwardedRef<T>) => {
     const ref = useRef<T>(null);
