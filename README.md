@@ -34,7 +34,7 @@ yarn add @ukorvl/react-on-screen
 ```
 The standalone version creates window.ReactOnScreen object with all exports from esm version.
 
-Note, that ```react``` package is not included into standalone version, but is required. Standalone version requires global React variable, defined somewhere, to work as expected.
+Note, that ```react``` package is not included into standalone version, but is required. Standalone version requires global React variable to work as expected.
 
 ## Usage
 
