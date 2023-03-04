@@ -6,7 +6,7 @@
 Lightweight typescript library to detect React elements visibility
 
 [![Build](https://github.com/ukorvl/react-on-screen/actions/workflows/build.yaml/badge.svg)](https://github.com/ukorvl/react-on-screen/actions/workflows/build.yaml)
-[![Npm version](https://img.shields.io/npm/v/@ukorvl/react-on-screen)](https://www.npmjs.com/package/@ukorvl/react-on-screen)
+[![Npm version](https://img.shields.io/npm/v/@ukorvl/react-on-screen?logo=npm)](https://www.npmjs.com/package/@ukorvl/react-on-screen)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 [![Minified size](https://img.shields.io/bundlephobia/min/@ukorvl/react-on-screen)](https://bundlephobia.com/package/@ukorvl/react-on-screen)
 
