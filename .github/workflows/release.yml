@@ -1,0 +1,72 @@
+name: Release
+
+on:
+  # Allows to trigger workflow manually
+  workflow_dispatch:
+
+jobs:
+  ensure_version_changed:
+    name: Ensure that version was changed
+    runs-on: [ubuntu-latest]
+    outputs:
+      version: ${{ steps.check_version.outputs.version }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Check if version was changed
+        id: check_version
+        run: |
+          NEW_PACKAGE_VERSION=$(node -pe 'require("./package.json").version')
+
+          latestTag=$(git describe --tags `git rev-list --tags --max-count=1`)
+
+          git checkout $latestTag
+
+          OLD_PACKAGE_VERSION=$(node -pe 'require("./package.json").version')
+
+          if [ $NEW_PACKAGE_VERSION != $OLD_PACKAGE_VERSION ]; then
+            echo "::set-output name=version::$NEW_PACKAGE_VERSION"
+          fi
+
+  build:
+    needs: [ensure_version_changed]
+    if: ${{ needs.ensure_version_changed.outputs.version }}
+    uses: ./.github/workflows/build.yaml
+    secrets: inherit
+    with:
+      should_pack: true
+
+  tag:
+    runs-on: [ubuntu-latest]
+    needs: [build, ensure_version_changed]
+    if: ${{ needs.ensure_version_changed.outputs.version }}
+    name: Tag
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Tag new version
+      run: git tag v${{ needs.ensure_version_changed.outputs.version }}
+
+    - name: Push tags
+      uses: ad-m/github-push-action@master
+      with:
+        tags: true
+
+  publish:
+    runs-on: [ubuntu-latest]
+    needs: [build, ensure_version_changed, tag]
+    if: ${{ needs.ensure_version_changed.outputs.version }}
+    name: Publish to npm
+    steps:
+    - name: Download artifact
+      uses: actions/download-artifact@v3
+      with:
+        name: ukorvl-react-on-screen-${{ needs.ensure_version_changed.outputs.version }}
+
+    - name: Publish
+      run:
+        npm publish --access public ukorvl-react-on-screen-${{ needs.ensure_version_changed.outputs.version }}.tgz
