@@ -39,9 +39,25 @@ jobs:
     with:
       should_pack: true
 
-  tag:
+  publish:
     runs-on: [ubuntu-latest]
     needs: [build, ensure_version_changed]
+    if: ${{ needs.ensure_version_changed.outputs.version }}
+    name: Publish to npm
+    steps:
+    - name: Download artifact
+      uses: actions/download-artifact@v3
+      with:
+        name: ukorvl-react-on-screen-${{ needs.ensure_version_changed.outputs.version }}
+
+    - name: Publish
+      run: |
+        npm config set "//registry.npmjs.org/:_authToken" ${{ secrets.NPM_PUBLISH_TOKEN }}
+        npm publish --access public ukorvl-react-on-screen-${{ needs.ensure_version_changed.outputs.version }}.tgz
+
+  tag:
+    runs-on: [ubuntu-latest]
+    needs: [build, ensure_version_changed, publish]
     if: ${{ needs.ensure_version_changed.outputs.version }}
     name: Tag
     steps:
@@ -55,18 +71,3 @@ jobs:
       uses: ad-m/github-push-action@master
       with:
         tags: true
-
-  publish:
-    runs-on: [ubuntu-latest]
-    needs: [build, ensure_version_changed, tag]
-    if: ${{ needs.ensure_version_changed.outputs.version }}
-    name: Publish to npm
-    steps:
-    - name: Download artifact
-      uses: actions/download-artifact@v3
-      with:
-        name: ukorvl-react-on-screen-${{ needs.ensure_version_changed.outputs.version }}
-
-    - name: Publish
-      run:
-        npm publish --access public ukorvl-react-on-screen-${{ needs.ensure_version_changed.outputs.version }}.tgz
