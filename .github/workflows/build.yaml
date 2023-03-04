@@ -41,12 +41,12 @@ jobs:
         run: npm run build
 
       - name: Pack build reults
-        if: ${{ inputs.should_pack === true }}
+        if: ${{ inputs.should_pack == true }}
         run: npm pack
 
       - name: Get version
         id: get_version
-        if: ${{ inputs.should_pack === true }}
+        if: ${{ inputs.should_pack == true }}
         run: |
           VERSION=$(node -pe 'require("./package.json").version')
           echo "::set-output name=version::$VERSION"
