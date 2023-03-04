@@ -6,12 +6,14 @@ import { assignRefs } from './internal';
 /**
  * High order component that takes a component and injects onScreen props into it.
  * @example ```tsx
- * const List = forwardRef(function List({isOnScreen, ...restProps}: ListProps) (
- *   <ul className={isOnScreen ? 'my-class' : ''} {...restProps}>
- *    <li>Something</li>
- *    ...
- *   </ul>
- * ));
+ * const List = forwardRef(function List({isOnScreen, ...restProps}: ListProps) {
+ *   return (
+ *     <ul className={isOnScreen ? 'my-class' : ''} {...restProps}>
+ *      <li>Something</li>
+ *        ...
+ *     </ul>
+ *   )
+ * });
  *
  * export const ListWithOnScreen = WithOnScreen(List, {threshold: 0.5, margin: '4rem'});
  * ```

@@ -71,12 +71,14 @@ const MyComponent = () => {
 
 ### HOC
 ```tsx
-const List = ({isOnScreen, ref, ...restProps}: ListProps) => (
-  <ul className={isOnScreen ? 'my-class' : ''} {...restProps}>
-    <li>Something</li>
-      {'...'}
-  </ul>
-)
+const List = forwardRef(function List({isOnScreen, ...restProps}: ListProps, ref) {
+  return (
+    <ul className={isOnScreen ? 'my-class' : ''} {...restProps}>
+      <li>Something</li>
+        {'...'}
+    </ul>
+  )
+})
 
 export const ListWithOnScreen = WithOnScreen(List, {threshold: 0.5, margin: '4rem'});
 ```
