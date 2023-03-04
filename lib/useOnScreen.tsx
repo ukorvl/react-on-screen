@@ -28,6 +28,11 @@ export type UseOnScreenSettings<T extends HTMLElement = HTMLElement> = {
    * @example ```50px 0 0 | 50px | 2rem 3rem```
    */
   margin?: string;
+  /**
+   * Initial isOnScreen value.
+   * @default false
+   */
+  initialVisibility?: boolean;
 };
 
 /**
@@ -46,8 +51,9 @@ export const useOnScreen = <T extends HTMLElement>({
   threshold = 0,
   once = false,
   margin,
+  initialVisibility = false,
 }: UseOnScreenSettings<T>) => {
-  const [isIntersecting, setIntersecting] = useState(false);
+  const [isIntersecting, setIntersecting] = useState(initialVisibility);
   const [intersectionRatio, setIntersectionRatio] = useState<number>();
 
   useEffect(() => {
