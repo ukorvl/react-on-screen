@@ -52,7 +52,7 @@ jobs:
           echo "::set-output name=version::$VERSION"
 
       - name: Upload build result
-        if: ${{ inputs.should_pack === true }}
+        if: ${{ inputs.should_pack == true }}
         uses: actions/upload-artifact@v3
         with:
           name: ukorvl-react-on-screen-${{ steps.get_version.outputs.version }}
