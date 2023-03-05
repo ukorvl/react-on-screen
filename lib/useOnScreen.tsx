@@ -29,7 +29,7 @@ export type UseOnScreenSettings<T extends HTMLElement = HTMLElement> = {
    */
   margin?: string;
   /**
-   * Initial isOnScreen value.
+   * Initial isOnScreen value to initialize hook/component with.
    * @default false
    */
   initialVisibility?: boolean;

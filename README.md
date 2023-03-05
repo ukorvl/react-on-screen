@@ -73,7 +73,7 @@ const MyComponent = () => {
 ```tsx
 const List = forwardRef(function List({isOnScreen, ...restProps}: ListProps, ref) {
   return (
-    <ul className={isOnScreen ? 'my-class' : ''} {...restProps}>
+    <ul ref={ref} className={isOnScreen ? 'my-class' : ''} {...restProps}>
       <li>Something</li>
         {'...'}
     </ul>

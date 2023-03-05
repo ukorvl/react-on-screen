@@ -6,9 +6,9 @@ import { assignRefs } from './internal';
 /**
  * High order component that takes a component and injects onScreen props into it.
  * @example ```tsx
- * const List = forwardRef(function List({isOnScreen, ...restProps}: ListProps) {
+ * const List = forwardRef(function List({isOnScreen, ...restProps}: ListProps, ref) {
  *   return (
- *     <ul className={isOnScreen ? 'my-class' : ''} {...restProps}>
+ *     <ul ref={ref} className={isOnScreen ? 'my-class' : ''} {...restProps}>
  *      <li>Something</li>
  *        ...
  *     </ul>
