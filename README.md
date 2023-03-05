@@ -91,7 +91,7 @@ export const ListWithOnScreen = WithOnScreen(List, {threshold: 0.5, margin: '4re
 |threshold       |0                |Could be a single number from 0 to 1, or array of numbers. If you only want to detect when visibility passes the 50% mark, you can use a value of 0.5. Set 1 to consider visibility only if all element is on the screen.If array of thresholds is provided, visibility detection will be triggered every time visibility passes one of provided thresholds.|
 |margin          |undefined        |Could be any valid css margin value. This value serves to grow or shrink each side of the target element's bounding box before computing is it visible or not.|
 |once            |false            |Triggers visibility detection only once. Once target element becomes visible, visibility detection will be disabled.|
-|initialVisibility |false          |Initial isOnScreen value. Could be useful when working with elements that are on the screen at the first render, and we don't want to wait for InersectionObserver initialization to make some actions.|
+|initialVisibility |false          |Initial isOnScreen value. Could be useful when working with elements that are on the screen at the first render, and we don't want to wait for InersectionObserver initialization to do some actions.|
 
 ## License
 
