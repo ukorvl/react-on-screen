@@ -3,7 +3,7 @@ import { RefObject, useEffect, useState } from 'react';
 /**
  * UseOnScreen hook settings.
  */
-export type UseOnScreenSettings<T extends HTMLElement = HTMLElement> = {
+export type UseOnScreenParameters<T extends HTMLElement = HTMLElement> = {
   /**
    * Target React element ref.
    */
@@ -43,7 +43,7 @@ export type UseOnScreenSettings<T extends HTMLElement = HTMLElement> = {
  *
  * return (<div ref={ref}>{isOnScreen ? 'On screen!' : 'Not on screen'}</div>);
  * ```
- * @param {UseOnScreenSettings} useOnScreenProps - Props.
+ * @param {UseOnScreenParameters} useOnScreenParameters - Parameters.
  * @returns .
  */
 export const useOnScreen = <T extends HTMLElement>({
@@ -52,7 +52,7 @@ export const useOnScreen = <T extends HTMLElement>({
   once = false,
   margin,
   initialVisibility = false,
-}: UseOnScreenSettings<T>) => {
+}: UseOnScreenParameters<T>) => {
   const [isIntersecting, setIntersecting] = useState(initialVisibility);
   const [intersectionRatio, setIntersectionRatio] = useState<number>();
 

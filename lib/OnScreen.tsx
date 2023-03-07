@@ -7,7 +7,7 @@ import React, {
   ElementType,
   ComponentProps,
 } from 'react';
-import { UseOnScreenSettings, useOnScreen } from './useOnScreen';
+import { UseOnScreenParameters, useOnScreen } from './useOnScreen';
 
 /**
  * OnScreen component own props.
@@ -26,7 +26,7 @@ type OnScreenOwnProps<
    * Element to render.
    */
   as?: AS;
-} & Omit<UseOnScreenSettings<T>, 'ref'>;
+} & Omit<UseOnScreenParameters<T>, 'ref'>;
 
 /**
  * OnScreen component props with generic element props.
