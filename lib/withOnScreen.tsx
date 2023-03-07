@@ -1,7 +1,14 @@
 import React, { useRef, ComponentType, forwardRef, ForwardedRef } from 'react';
 import hoistNonReactStatics from 'hoist-non-react-statics';
-import { UseOnScreenSettings, useOnScreen } from './useOnScreen';
+import { UseOnScreenParameters, useOnScreen } from './useOnScreen';
 import { assignRefs } from './internal';
+
+/**
+ * WithOnScreen wrapped component with injected props.
+ */
+export type WithOnScreenWrappedComponent<
+  Props extends Record<string, unknown>,
+> = ComponentType<Props & ReturnType<typeof useOnScreen>>;
 
 /**
  * High order component that takes a component and injects onScreen props into it.
@@ -25,8 +32,8 @@ export const withOnScreen = <
   P extends Record<string, unknown>,
   T extends HTMLElement,
 >(
-  WrappedComponent: ComponentType<P & ReturnType<typeof useOnScreen>>,
-  settings?: Omit<UseOnScreenSettings<T>, 'ref'>,
+  WrappedComponent: WithOnScreenWrappedComponent<P>,
+  settings?: Omit<UseOnScreenParameters<T>, 'ref'>,
 ) => {
   const WithOnScreen = (props: P, forwardedRef: ForwardedRef<T>) => {
     const ref = useRef<T>(null);

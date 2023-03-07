@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { useOnScreen, UseOnScreenSettings } from '../useOnScreen';
+import { useOnScreen, UseOnScreenParameters } from '../useOnScreen';
 import {
   ComponentRenderer,
   createIsOnScreenValueTest,
@@ -7,7 +7,7 @@ import {
   createRenderTest,
 } from './testUtils';
 
-const ComponentTemplate = (props: Pick<UseOnScreenSettings, 'once'>) => {
+const ComponentTemplate = (props: Pick<UseOnScreenParameters, 'once'>) => {
   const ref = useRef(null);
   const { isOnScreen } = useOnScreen({ ref, ...props });
 

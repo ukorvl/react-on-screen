@@ -2,13 +2,13 @@
 import { act, render } from '@testing-library/react';
 import { mockIntersectionObserver } from 'jsdom-testing-mocks';
 import { ReactElement } from 'react';
-import { UseOnScreenSettings } from '../useOnScreen';
+import { UseOnScreenParameters } from '../useOnScreen';
 
 /**
  * Renders component.
  */
 export type ComponentRenderer = (
-  settings?: Pick<UseOnScreenSettings, 'once'>,
+  settings?: Pick<UseOnScreenParameters, 'once'>,
 ) => ReactElement;
 
 const targetTestId = 'target';
