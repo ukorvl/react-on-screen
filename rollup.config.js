@@ -23,7 +23,6 @@ const createBanner = (version) => {
 
 /** Get config to generate js */
 const getConfig = ({
-  input,
   outputFile,
   format,
   isStandalone = false,
