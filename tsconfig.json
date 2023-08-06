@@ -14,7 +14,6 @@
     "module": "CommonJS",
     "jsx": "react",
     "noImplicitReturns": true,
-    "suppressImplicitAnyIndexErrors": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "moduleResolution": "node",
