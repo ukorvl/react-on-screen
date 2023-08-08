@@ -1,0 +1,4 @@
+{
+  "editor.codeActionsOnSave": { "quickfix.rome": true },
+  "editor.defaultFormatter": "rome.rome"
+}

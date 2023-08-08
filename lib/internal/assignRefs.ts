@@ -5,9 +5,9 @@ import { MutableRefObject, Ref } from 'react';
  * @param refs Refs to assign.
  * @returns Assigned ref.
  */
-export const assignRefs = <T extends unknown>(...refs: Ref<T | null>[]) => {
+export const assignRefs = <T>(...refs: Ref<T | null>[]) => {
   return (node: T | null) => {
-    refs.forEach(r => {
+    refs.forEach((r) => {
       if (typeof r === 'function') {
         r(node);
       } else if (r) {

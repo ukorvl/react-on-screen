@@ -7,13 +7,10 @@ import {
   createRenderTest,
 } from './testUtils';
 
-const renderComponent: ComponentRenderer = settings => (
+const renderComponent: ComponentRenderer = (settings) => (
   <OnScreen<HTMLDivElement> {...settings}>
     {({ ref, isOnScreen }) => (
-      <div
-        ref={ref}
-        data-testid={`target${isOnScreen ? '-isOnScreen' : ''}`}
-      />
+      <div ref={ref} data-testid={`target${isOnScreen ? '-isOnScreen' : ''}`} />
     )}
   </OnScreen>
 );
@@ -23,8 +20,5 @@ describe('OnScreen', () => {
 
   it('isOnScreen value changes', createIsOnScreenValueTest(renderComponent));
 
-  it(
-    'Once prop is working as expected',
-    createOnceParameterTest(renderComponent),
-  );
+  it('Once prop is working as expected', createOnceParameterTest(renderComponent));
 });

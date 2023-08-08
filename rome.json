@@ -1,0 +1,23 @@
+{
+  "$schema": "https://docs.rome.tools/schemas/12.1.3/schema.json",
+  "organizeImports": {
+    "enabled": false
+  },
+  "linter": {
+    "rules": {
+      "recommended": true,
+      "correctness": {
+        "noUnusedVariables": "warn"
+      }
+    }
+  },
+  "formatter": {
+    "indentStyle": "space",
+    "lineWidth": 100,
+    "indentSize": 2,
+    "formatWithErrors": false
+  },
+  "files": {
+    "ignore": ["node_modules/*", "build/*"]
+  }
+}

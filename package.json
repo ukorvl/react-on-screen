@@ -1,6 +1,6 @@
 {
   "name": "@ukorvl/react-on-screen",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Lightweight typescript library to detect React elements visibility",
   "license": "MIT",
   "author": "ukorvl",
@@ -17,8 +17,7 @@
     "prebuild": "rimraf build",
     "build": "rollup -c",
     "test": "jest",
-    "lint": "eslint --ext=ts,tsx lib --max-warnings=0",
-    "lint:editorconfig": "npx editorconfig-checker",
+    "lint": "rome check .",
     "prepare": "husky install"
   },
   "keywords": [
@@ -59,6 +58,7 @@
     "rollup-plugin-dts": "^4.2.3",
     "rollup-plugin-esbuild": "^5.0.0",
     "rollup-plugin-filesize": "^10.0.0",
+    "rome": "12.1.3",
     "ts-jest": "^29.0.3",
     "typescript": "4.7"
   },
@@ -66,83 +66,7 @@
     "access": "public"
   },
   "lint-staged": {
-    "*.{ts,tsx}": "prettier --write"
-  },
-  "prettier": {
-    "printWidth": 80,
-    "trailingComma": "all",
-    "semi": true,
-    "singleQuote": true,
-    "arrowParens": "avoid",
-    "jsxSingleQuote": false,
-    "singleAttributePerLine": true
-  },
-  "eslintConfig": {
-    "parser": "@typescript-eslint/parser",
-    "parserOptions": {
-      "ecmaVersion": "latest",
-      "ecmaFeatures": {
-        "jsx": true
-      },
-      "sourceType": "module"
-    },
-    "env": {
-      "browser": true
-    },
-    "extends": [
-      "eslint:recommended",
-      "plugin:react/recommended",
-      "plugin:jsdoc/recommended",
-      "plugin:react-hooks/recommended"
-    ],
-    "ignorePatterns": [
-      "node_modules",
-      "build",
-      "rollup.config.js"
-    ],
-    "rules": {
-      "no-unused-vars": "off",
-      "no-duplicate-imports": "warn",
-      "jsdoc/newline-after-description": "off",
-      "jsdoc/require-returns-type": "off",
-      "jsdoc/require-param-type": "off",
-      "jsdoc/require-description-complete-sentence": "warn",
-      "jsdoc/check-indentation": "warn",
-      "jsdoc/require-jsdoc": [
-        "warn",
-        {
-          "publicOnly": true,
-          "contexts": [
-            "TSInterfaceDeclaration",
-            "TSTypeAliasDeclaration",
-            "TSEnumDeclaration"
-          ],
-          "require": {
-            "FunctionExpression": true,
-            "ClassDeclaration": true,
-            "MethodDefinition": true,
-            "ArrowFunctionExpression": true,
-            "ClassExpression": true
-          }
-        }
-      ]
-    },
-    "overrides": [
-      {
-        "files": [
-          "*.test.tsx"
-        ],
-        "plugins": [
-          "jest"
-        ],
-        "extends": [
-          "plugin:jest/recommended"
-        ],
-        "rules": {
-          "jest/expect-expect": "off"
-        }
-      }
-    ]
+    "*.{ts,tsx}": "rome format --quote-style=double --write"
   },
   "jest": {
     "roots": [
