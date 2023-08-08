@@ -19,14 +19,10 @@ const createBanner = (version) => {
  *
  * @license MIT
  */`;
-}
+};
 
 /** Get config to generate js */
-const getConfig = ({
-  outputFile,
-  format,
-  isStandalone = false,
-}) => ({
+const getConfig = ({ outputFile, format, isStandalone = false }) => ({
   input: 'lib/index.ts',
   output: {
     file: outputFile,
@@ -46,18 +42,18 @@ const getConfig = ({
   ].concat(
     isStandalone
       ? replace({
-        preventAssignment: true,
-        values: { 'process.env.NODE_ENV': JSON.stringify('production') },
-      })
-      : []
+          preventAssignment: true,
+          values: { 'process.env.NODE_ENV': JSON.stringify('production') },
+        })
+      : [],
   ),
-  external: ['react', 'react-dom'].concat(isStandalone ? [] : ['hoist-non-react-statics'])
+  external: ['react', 'react-dom'].concat(isStandalone ? [] : ['hoist-non-react-statics']),
 });
 
 /** Generate typings config */
 const dtsConfig = {
   input: 'lib/index.ts',
-  output: [{ file: packageJson.types, format: "es" }],
+  output: [{ file: packageJson.types, format: 'es' }],
   plugins: [dts()],
 };
 
@@ -75,7 +71,7 @@ const configs = [
     format: 'iife',
     isStandalone: true,
   }),
-  dtsConfig
+  dtsConfig,
 ];
 
 module.exports = configs;

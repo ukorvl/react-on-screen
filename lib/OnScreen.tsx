@@ -12,16 +12,11 @@ import { UseOnScreenParameters, useOnScreen } from './useOnScreen';
 /**
  * OnScreen component own props.
  */
-type OnScreenOwnProps<
-  T extends HTMLElement,
-  AS extends ElementType = ElementType,
-> = {
+type OnScreenOwnProps<T extends HTMLElement, AS extends ElementType = ElementType> = {
   /**
    * Render function.
    */
-  children: (
-    props: { ref: RefObject<T> } & ReturnType<typeof useOnScreen>,
-  ) => ReactElement;
+  children: (props: { ref: RefObject<T> } & ReturnType<typeof useOnScreen>) => ReactElement;
   /**
    * Element to render.
    */
@@ -34,8 +29,7 @@ type OnScreenOwnProps<
 export type OnScreenProps<
   T extends HTMLElement,
   AS extends ElementType = ElementType,
-> = OnScreenOwnProps<T, AS> &
-  Omit<ComponentProps<AS>, keyof OnScreenOwnProps<T, AS>>;
+> = OnScreenOwnProps<T, AS> & Omit<ComponentProps<AS>, keyof OnScreenOwnProps<T, AS>>;
 
 /**
  * Wrapper component to detect react element visibility.
@@ -52,10 +46,7 @@ export type OnScreenProps<
  * @param {OnScreenProps} onScreenComponentProps Props.
  * @returns Children elements with on-screen wrapper.
  */
-export const OnScreen = <
-  T extends HTMLElement,
-  AS extends ElementType = ElementType,
->({
+export const OnScreen = <T extends HTMLElement, AS extends ElementType = ElementType>({
   children,
   margin,
   threshold,

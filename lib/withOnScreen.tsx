@@ -6,9 +6,9 @@ import { assignRefs } from './internal';
 /**
  * WithOnScreen wrapped component with injected props.
  */
-export type WithOnScreenWrappedComponent<
-  Props extends Record<string, unknown>,
-> = ComponentType<Props & ReturnType<typeof useOnScreen>>;
+export type WithOnScreenWrappedComponent<Props extends Record<string, unknown>,> = ComponentType<
+  Props & ReturnType<typeof useOnScreen>
+>;
 
 /**
  * High order component that takes a component and injects onScreen props into it.
@@ -28,10 +28,7 @@ export type WithOnScreenWrappedComponent<
  * @param settings Wrapper settings.
  * @returns Wrapped component with onScreen props.
  */
-export const withOnScreen = <
-  P extends Record<string, unknown>,
-  T extends HTMLElement,
->(
+export const withOnScreen = <P extends Record<string, unknown>, T extends HTMLElement>(
   WrappedComponent: WithOnScreenWrappedComponent<P>,
   settings?: Omit<UseOnScreenParameters<T>, 'ref'>,
 ) => {
@@ -39,13 +36,7 @@ export const withOnScreen = <
     const ref = useRef<T>(null);
     const useOnScreenData = useOnScreen({ ref, ...settings });
 
-    return (
-      <WrappedComponent
-        ref={assignRefs(ref, forwardedRef)}
-        {...useOnScreenData}
-        {...props}
-      />
-    );
+    return <WrappedComponent ref={assignRefs(ref, forwardedRef)} {...useOnScreenData} {...props} />;
   };
 
   hoistNonReactStatics(WithOnScreen, WrappedComponent);

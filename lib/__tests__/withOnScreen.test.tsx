@@ -8,19 +8,13 @@ import {
   createRenderTest,
 } from './testUtils';
 
-const ComponentTemplate = forwardRef<
-  HTMLDivElement,
-  ReturnType<typeof useOnScreen>
->(function ComponentTemplate({ isOnScreen }, ref) {
-  return (
-    <div
-      ref={ref}
-      data-testid={`target${isOnScreen ? '-isOnScreen' : ''}`}
-    />
-  );
-});
+const ComponentTemplate = forwardRef<HTMLDivElement, ReturnType<typeof useOnScreen>>(
+  function ComponentTemplate({ isOnScreen }, ref) {
+    return <div ref={ref} data-testid={`target${isOnScreen ? '-isOnScreen' : ''}`} />;
+  },
+);
 
-const renderComponent: ComponentRenderer = settings => {
+const renderComponent: ComponentRenderer = (settings) => {
   const WithOnScreen = withOnScreen(ComponentTemplate, settings);
   return <WithOnScreen />;
 };
@@ -30,8 +24,5 @@ describe('withOnScreen', () => {
 
   it('isOnScreen value changes', createIsOnScreenValueTest(renderComponent));
 
-  it(
-    'Once prop is working as expected',
-    createOnceParameterTest(renderComponent),
-  );
+  it('Once prop is working as expected', createOnceParameterTest(renderComponent));
 });

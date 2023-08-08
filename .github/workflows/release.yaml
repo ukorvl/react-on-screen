@@ -7,7 +7,7 @@ on:
 jobs:
   ensure_version_changed:
     name: Ensure that version was changed
-    runs-on: [ubuntu-latest]
+    runs-on: ubuntu-latest
     outputs:
       version: ${{ steps.check_version.outputs.version }}
     steps:
@@ -40,7 +40,7 @@ jobs:
       should_pack: true
 
   publish:
-    runs-on: [ubuntu-latest]
+    runs-on: ubuntu-latest
     needs: [build, ensure_version_changed]
     if: ${{ needs.ensure_version_changed.outputs.version }}
     name: Publish to npm
@@ -56,7 +56,7 @@ jobs:
         npm publish --access public ukorvl-react-on-screen-${{ needs.ensure_version_changed.outputs.version }}.tgz
 
   tag:
-    runs-on: [ubuntu-latest]
+    runs-on: ubuntu-latest
     needs: [build, ensure_version_changed, publish, release]
     if: ${{ needs.ensure_version_changed.outputs.version }}
     name: Tag
