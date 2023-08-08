@@ -62,7 +62,7 @@
     "access": "public"
   },
   "lint-staged": {
-    "*.{ts,tsx}": "rome format --write"
+    "*.{js,ts,tsx}": "rome format --write"
   },
   "jest": {
     "roots": [
