@@ -19,5 +19,10 @@
   },
   "files": {
     "ignore": ["node_modules/*", "build/*"]
+  },
+  "javascript": {
+    "formatter": {
+      "quoteStyle": "single"
+    }
   }
 }
