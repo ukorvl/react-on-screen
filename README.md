@@ -71,6 +71,8 @@ const MyComponent = () => {
 
 ### HOC
 ```tsx
+import { WithOnScreen } from '@ukorvl/react-on-screen';
+
 const List = forwardRef(function List({isOnScreen, ...restProps}: ListProps, ref) {
   return (
     <ul ref={ref} className={isOnScreen ? 'my-class' : ''} {...restProps}>
@@ -84,7 +86,7 @@ export const ListWithOnScreen = WithOnScreen(List, {threshold: 0.5, margin: '4re
 ```
 
 ### API
-**useOnScreen** hook parameters. **OnScreen** and **WithOnScreen** components have the same api, except ref. **useOnScreen** consumes target element ref as a parameter, but components deal with target element in a different way.
+**useOnScreen** hook parameters.
 
 |Name            |Default         |Description        |
 |----------------|----------------|-------------------|
@@ -92,6 +94,8 @@ export const ListWithOnScreen = WithOnScreen(List, {threshold: 0.5, margin: '4re
 |margin          |undefined        |Could be any valid css margin value. This value serves to grow or shrink each side of the target element's bounding box before computing is it visible or not.|
 |once            |false            |Triggers visibility detection only once. Once target element becomes visible, visibility detection will be disabled.|
 |initialVisibility |false          |Initial isOnScreen value. Could be useful when working with elements that are on the screen at the first render, and we don't want to wait for InersectionObserver initialization to do some actions.|
+
+**OnScreen** and **WithOnScreen** components have the same api, except ref. **useOnScreen** consumes target element ref as a parameter, but components deal with target element in a different way.
 
 ## License
 
