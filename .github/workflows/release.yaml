@@ -28,7 +28,7 @@ jobs:
           OLD_PACKAGE_VERSION=$(node -pe 'require("./package.json").version')
 
           if [ $NEW_PACKAGE_VERSION != $OLD_PACKAGE_VERSION ]; then
-            echo "::set-output name=version::$NEW_PACKAGE_VERSION"
+            echo "{version}={$NEW_PACKAGE_VERSION}" >> $GITHUB_OUTPUT
           fi
 
   build:
