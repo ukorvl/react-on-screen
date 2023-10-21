@@ -1,7 +1,7 @@
-import React, { useRef, ComponentType, forwardRef, ForwardedRef } from 'react';
-import hoistNonReactStatics from 'hoist-non-react-statics';
-import { UseOnScreenParameters, useOnScreen } from './useOnScreen';
-import { assignRefs } from './internal';
+import React, { useRef, ComponentType, forwardRef, ForwardedRef } from "react";
+import hoistNonReactStatics from "hoist-non-react-statics";
+import { UseOnScreenParameters, useOnScreen } from "./useOnScreen";
+import { assignRefs } from "./internal";
 
 /**
  * WithOnScreen wrapped component with injected props.
@@ -30,7 +30,7 @@ export type WithOnScreenWrappedComponent<Props extends Record<string, unknown>,>
  */
 export const withOnScreen = <P extends Record<string, unknown>, T extends HTMLElement>(
   WrappedComponent: WithOnScreenWrappedComponent<P>,
-  settings?: Omit<UseOnScreenParameters<T>, 'ref'>,
+  settings?: Omit<UseOnScreenParameters<T>, "ref">,
 ) => {
   const WithOnScreen = (props: P, forwardedRef: ForwardedRef<T>) => {
     const ref = useRef<T>(null);
@@ -42,7 +42,7 @@ export const withOnScreen = <P extends Record<string, unknown>, T extends HTMLEl
   hoistNonReactStatics(WithOnScreen, WrappedComponent);
 
   WithOnScreen.displayName = `WithOnScreen(${
-    WrappedComponent.displayName || WrappedComponent.name || 'Component'
+    WrappedComponent.displayName || WrappedComponent.name || "Component"
   })`;
 
   return forwardRef(WithOnScreen);
