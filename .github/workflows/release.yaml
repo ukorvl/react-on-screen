@@ -9,7 +9,7 @@ jobs:
     name: Ensure that version was changed
     runs-on: ubuntu-latest
     outputs:
-      version: ${{ steps.check_version.outputs.version }}
+      version: xxx
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -18,7 +18,6 @@ jobs:
 
       - name: Check if version was changed
         id: check_version
-        shell: bash
         run: |
           NEW_PACKAGE_VERSION=$(node -pe 'require("./package.json").version')
           echo "$NEW_PACKAGE_VERSION"
