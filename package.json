@@ -18,7 +18,7 @@
     "build": "rollup -c",
     "test": "jest",
     "lint": "biome lint ./lib",
-    "format": "biome format --write",
+    "format": "biome format --write ./lib",
     "prepare": "husky install"
   },
   "keywords": [
@@ -65,7 +65,7 @@
     "access": "public"
   },
   "lint-staged": {
-    "*.{js,ts,tsx}": "npm run format"
+    "*.{js,ts,tsx}": "biome format --write"
   },
   "jest": {
     "roots": [

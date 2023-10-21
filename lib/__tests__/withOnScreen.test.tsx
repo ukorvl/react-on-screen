@@ -1,16 +1,16 @@
-import React, { forwardRef } from 'react';
-import { useOnScreen } from '../useOnScreen';
-import { withOnScreen } from '../withOnScreen';
+import React, { forwardRef } from "react";
+import { useOnScreen } from "../useOnScreen";
+import { withOnScreen } from "../withOnScreen";
 import {
   ComponentRenderer,
   createIsOnScreenValueTest,
   createOnceParameterTest,
   createRenderTest,
-} from './testUtils';
+} from "./testUtils";
 
 const ComponentTemplate = forwardRef<HTMLDivElement, ReturnType<typeof useOnScreen>>(
   function ComponentTemplate({ isOnScreen }, ref) {
-    return <div ref={ref} data-testid={`target${isOnScreen ? '-isOnScreen' : ''}`} />;
+    return <div ref={ref} data-testid={`target${isOnScreen ? "-isOnScreen" : ""}`} />;
   },
 );
 
@@ -19,10 +19,10 @@ const renderComponent: ComponentRenderer = (settings) => {
   return <WithOnScreen />;
 };
 
-describe('withOnScreen', () => {
-  it('withOnScreen component renders', createRenderTest(renderComponent));
+describe("withOnScreen", () => {
+  it("withOnScreen component renders", createRenderTest(renderComponent));
 
-  it('isOnScreen value changes', createIsOnScreenValueTest(renderComponent));
+  it("isOnScreen value changes", createIsOnScreenValueTest(renderComponent));
 
-  it('Once prop is working as expected', createOnceParameterTest(renderComponent));
+  it("Once prop is working as expected", createOnceParameterTest(renderComponent));
 });
