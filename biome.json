@@ -8,6 +8,9 @@
       "recommended": true,
       "correctness": {
         "noUnusedVariables": "warn"
+      },
+      "suspicious": {
+        "noExplicitAny": "off"
       }
     }
   },
