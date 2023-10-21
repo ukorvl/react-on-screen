@@ -48,8 +48,6 @@ jobs:
     if: ${{ needs.ensure_version_changed.outputs.version }}
     name: Publish to npm
     steps:
-    - name: echo
-      run: echo ${{ needs.ensure_version_changed.outputs.version }}
     - name: Download artifact
       uses: actions/download-artifact@v3
       with:
