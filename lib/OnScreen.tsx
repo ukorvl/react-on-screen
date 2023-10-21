@@ -6,8 +6,8 @@ import React, {
   ReactElement,
   ElementType,
   ComponentProps,
-} from 'react';
-import { UseOnScreenParameters, useOnScreen } from './useOnScreen';
+} from "react";
+import { UseOnScreenParameters, useOnScreen } from "./useOnScreen";
 
 /**
  * OnScreen component own props.
@@ -21,7 +21,7 @@ type OnScreenOwnProps<T extends HTMLElement, AS extends ElementType = ElementTyp
    * Element to render.
    */
   as?: AS;
-} & Omit<UseOnScreenParameters<T>, 'ref'>;
+} & Omit<UseOnScreenParameters<T>, "ref">;
 
 /**
  * OnScreen component props with generic element props.
@@ -65,7 +65,7 @@ export const OnScreen = <T extends HTMLElement, AS extends ElementType = Element
 
   const renderChildren = useCallback(
     () => Children.only(children({ ref, ...useOnScreenData })),
-    [useOnScreenData, children, ref],
+    [useOnScreenData, children],
   );
 
   if (Component !== undefined) {

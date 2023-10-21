@@ -14,7 +14,7 @@
   "formatter": {
     "indentStyle": "space",
     "lineWidth": 100,
-    "indentSize": 2,
+    "indentWidth": 2,
     "formatWithErrors": false
   },
   "files": {

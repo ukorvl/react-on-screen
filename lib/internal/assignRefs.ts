@@ -1,4 +1,4 @@
-import { MutableRefObject, Ref } from 'react';
+import { MutableRefObject, Ref } from "react";
 
 /**
  * Takes both ref objects and ref functions and returns assigned ref function.
@@ -7,12 +7,12 @@ import { MutableRefObject, Ref } from 'react';
  */
 export const assignRefs = <T>(...refs: Ref<T | null>[]) => {
   return (node: T | null) => {
-    refs.forEach((r) => {
-      if (typeof r === 'function') {
-        r(node);
-      } else if (r) {
-        (r as MutableRefObject<T | null>).current = node;
+    for (const ref of refs) {
+      if (typeof ref === "function") {
+        ref(node);
+      } else if (ref) {
+        (ref as MutableRefObject<T | null>).current = node;
       }
-    });
+    }
   };
 };
