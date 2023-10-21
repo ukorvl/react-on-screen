@@ -12,7 +12,7 @@ import { UseOnScreenParameters, useOnScreen } from "./useOnScreen";
 /**
  * OnScreen component own props.
  */
-type OnScreenOwnProps<T extends HTMLElement, AS extends ElementType = ElementType> = {
+type OnScreenOwnProps<T extends HTMLElement = any, AS extends ElementType = ElementType> = {
   /**
    * Render function.
    */
@@ -27,7 +27,7 @@ type OnScreenOwnProps<T extends HTMLElement, AS extends ElementType = ElementTyp
  * OnScreen component props with generic element props.
  */
 export type OnScreenProps<
-  T extends HTMLElement,
+  T extends HTMLElement = any,
   AS extends ElementType = ElementType,
 > = OnScreenOwnProps<T, AS> & Omit<ComponentProps<AS>, keyof OnScreenOwnProps<T, AS>>;
 
@@ -46,7 +46,7 @@ export type OnScreenProps<
  * @param {OnScreenProps} onScreenComponentProps Props.
  * @returns Children elements with on-screen wrapper.
  */
-export const OnScreen = <T extends HTMLElement, AS extends ElementType = ElementType>({
+export const OnScreen = <T extends HTMLElement = any, AS extends ElementType = ElementType>({
   children,
   margin,
   threshold,
