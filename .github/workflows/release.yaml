@@ -30,7 +30,8 @@ jobs:
           echo "$OLD_PACKAGE_VERSION"
 
           if [ $NEW_PACKAGE_VERSION != $OLD_PACKAGE_VERSION ]; then
-            echo "{version}={$NEW_PACKAGE_VERSION}" >> $GITHUB_OUTPUT
+            echo "Version was changed"
+            echo "version=$NEW_PACKAGE_VERSION" >> $GITHUB_OUTPUT
           fi
 
   build:
