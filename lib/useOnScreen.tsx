@@ -3,7 +3,7 @@ import { RefObject, useEffect, useState } from "react";
 /**
  * UseOnScreen hook settings.
  */
-export type UseOnScreenParameters<T extends HTMLElement = HTMLElement> = {
+export type UseOnScreenParameters<T extends HTMLElement> = {
   /**
    * Target React element ref.
    */
