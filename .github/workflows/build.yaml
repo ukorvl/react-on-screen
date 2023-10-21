@@ -46,7 +46,7 @@ jobs:
         if: ${{ inputs.should_pack == true }}
         run: |
           VERSION=$(node -pe 'require("./package.json").version')
-          echo "::set-output name=version::$VERSION"
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
 
       - name: Upload build result
         if: ${{ inputs.should_pack == true }}
