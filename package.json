@@ -1,11 +1,14 @@
 {
   "name": "@ukorvl/react-on-screen",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Lightweight typescript library to detect React elements visibility",
   "license": "MIT",
   "author": "ukorvl",
   "repository": "https://github.com/ukorvl/react-on-screen",
   "homepage": "https://github.com/ukorvl/react-on-screen#readme",
+  "bugs": {
+    "url": "https://github.com/ukorvl/react-on-screen/issues"
+  },
   "main": "build/react-on-screen.cjs.js",
   "module": "build/react-on-screen.esm.js",
   "unpkg": "build/react-on-screen.standalone.js",
@@ -62,10 +65,11 @@
     "typescript": "4.7"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "provenance": true
   },
   "lint-staged": {
-    "*.{js,ts,tsx}": "biome format --write"
+    "*.{js,ts,tsx}": "npm run format"
   },
   "jest": {
     "roots": [
