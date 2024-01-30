@@ -1,11 +1,11 @@
-const nodeResolve = require('@rollup/plugin-node-resolve').nodeResolve;
-const commonjs = require('@rollup/plugin-commonjs').default;
-const replace = require('@rollup/plugin-replace');
-const esbuild = require('rollup-plugin-esbuild').default;
-const dts = require('rollup-plugin-dts').default;
-const filesize = require('rollup-plugin-filesize');
+const nodeResolve = require("@rollup/plugin-node-resolve").nodeResolve;
+const commonjs = require("@rollup/plugin-commonjs").default;
+const replace = require("@rollup/plugin-replace");
+const esbuild = require("rollup-plugin-esbuild").default;
+const dts = require("rollup-plugin-dts").default;
+const filesize = require("rollup-plugin-filesize");
 
-const packageJson = require('./package.json');
+const packageJson = require("./package.json");
 
 /** Create banner */
 const createBanner = (version) => {
@@ -23,13 +23,13 @@ const createBanner = (version) => {
 
 /** Get config to generate js */
 const getConfig = ({ outputFile, format, isStandalone = false }) => ({
-  input: 'lib/index.ts',
+  input: "lib/index.ts",
   output: {
     file: outputFile,
     format,
     sourcemap: true,
-    globals: isStandalone ? { react: 'React' } : undefined,
-    name: isStandalone ? 'ReactOnScreen' : undefined,
+    globals: isStandalone ? { react: "React" } : undefined,
+    name: isStandalone ? "ReactOnScreen" : undefined,
     banner: createBanner(packageJson.version),
   },
   plugins: [
@@ -43,32 +43,32 @@ const getConfig = ({ outputFile, format, isStandalone = false }) => ({
     isStandalone
       ? replace({
           preventAssignment: true,
-          values: { 'process.env.NODE_ENV': JSON.stringify('production') },
+          values: { "process.env.NODE_ENV": JSON.stringify("production") },
         })
       : [],
   ),
-  external: ['react', 'react-dom'].concat(isStandalone ? [] : ['hoist-non-react-statics']),
+  external: ["react", "react-dom"].concat(isStandalone ? [] : ["hoist-non-react-statics"]),
 });
 
 /** Generate typings config */
 const dtsConfig = {
-  input: 'lib/index.ts',
-  output: [{ file: packageJson.types, format: 'es' }],
+  input: "lib/index.ts",
+  output: [{ file: packageJson.types, format: "es" }],
   plugins: [dts()],
 };
 
 const configs = [
   getConfig({
     outputFile: packageJson.main,
-    format: 'cjs',
+    format: "cjs",
   }),
   getConfig({
     outputFile: packageJson.module,
-    format: 'esm',
+    format: "esm",
   }),
   getConfig({
     outputFile: packageJson.unpkg,
-    format: 'iife',
+    format: "iife",
     isStandalone: true,
   }),
   dtsConfig,

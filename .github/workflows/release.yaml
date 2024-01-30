@@ -44,6 +44,8 @@ jobs:
 
   publish:
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
     needs: [build, ensure_version_changed]
     if: ${{ needs.ensure_version_changed.outputs.version }}
     name: Publish to npm
