@@ -9,6 +9,6 @@
   "editor.formatOnPaste": true,
   "editor.formatOnType": true,
   "editor.codeActionsOnSave": {
-    "quickfix.biome": true
+    "quickfix.biome": "explicit"
   }
 }

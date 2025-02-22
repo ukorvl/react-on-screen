@@ -51,7 +51,7 @@ jobs:
     name: Publish to npm
     steps:
     - name: Download artifact
-      uses: actions/download-artifact@v4.1.7
+      uses: actions/download-artifact@v4
       with:
         name: ukorvl-react-on-screen-${{ needs.ensure_version_changed.outputs.version }}
 
